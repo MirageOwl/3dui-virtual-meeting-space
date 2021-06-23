@@ -4,31 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 3.0f;
-    private float translation;
-    private float straffe;
+    [SerializeField] private CharacterController controller; 
+    [SerializeField] private float speed = 5.0f;
 
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
-        // turn off the cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Input.GetAxis() is used to get the user's input
-        // You can furthor set it on Unity. (Edit, Project Settings, Input)
-        translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        straffe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        transform.Translate(straffe, 0, translation);
+        // Using the old input system? We might want to change that.
+        // Get direction relative to look direction by getting it from the transform.
+        Vector3 moveInput = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+        controller.Move(moveInput * speed * Time.deltaTime);
 
         if (Input.GetKeyDown("escape"))
-        {
-            // turn on the cursor
             Cursor.lockState = CursorLockMode.None;
-        }
     }
 
 }
