@@ -1,22 +1,10 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-public class MoveOnClick : MonoBehaviour
+public class MoveOnClick : PlayerController
 {
-    [Header("Movement")]
-    [SerializeField] private float speed;
-    [SerializeField] private bool useGravity;
-    [SerializeField] private float gravity;
-    [Header("References")]
-    [SerializeField] private Camera cam;
-    [SerializeField] private CharacterController controller;
     [SerializeField] private GameObject selectionPrefab;
-    [SerializeField] private LayerMask groundLayer;
 
     private Transform cursor;
-    private List<GameObject> toDestroy = new List<GameObject>();
-
-    private float verticalSpeed = 0f;
 
     private void Awake()
     {
@@ -32,19 +20,11 @@ public class MoveOnClick : MonoBehaviour
         if (cursor && Input.GetMouseButton(0))
         {
             Vector3 dir = cursor.position - transform.position;
-            dir = new Vector3(dir.x, 0, dir.z);
+            dir = new Vector3(dir.x, 0, dir.z).normalized;
             move += dir * speed * Time.deltaTime;
         }
 
-        if (useGravity)
-        {
-            if (Physics.CheckSphere(transform.position, 0.2f)) 
-                verticalSpeed = 0f;
-            else
-                Debug.Log("I am not grounded");
-
-            verticalSpeed += gravity  * Time.deltaTime;
-        }
+        HandleGravity();
 
         controller.Move(move + Vector3.up * verticalSpeed * Time.deltaTime);
     }

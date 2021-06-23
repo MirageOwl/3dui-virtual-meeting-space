@@ -305,7 +305,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-81256
+  m_Name: pb_Mesh-53920
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -595,7 +595,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-75120
+  m_Name: pb_Mesh-53978
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2597,7 +2597,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-74710
+  m_Name: pb_Mesh-53952
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2761,7 +2761,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-75966
+  m_Name: pb_Mesh-53964
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2925,7 +2925,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16916
+  m_Name: pb_Mesh27468
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3090,17 +3090,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1301325617778381051, guid: e23ee32bf6387d9418ea3f6942ed7d10, type: 3}
+    - target: {fileID: 693389677741267791, guid: e23ee32bf6387d9418ea3f6942ed7d10, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 23676978}
-    - target: {fileID: 1301325617778381051, guid: e23ee32bf6387d9418ea3f6942ed7d10, type: 3}
-      propertyPath: gravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1301325617778381051, guid: e23ee32bf6387d9418ea3f6942ed7d10, type: 3}
-      propertyPath: useGravity
-      value: 0
+    - target: {fileID: 693389677741267791, guid: e23ee32bf6387d9418ea3f6942ed7d10, type: 3}
+      propertyPath: dragSmooth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8101032766653082202, guid: e23ee32bf6387d9418ea3f6942ed7d10, type: 3}
       propertyPath: m_Name

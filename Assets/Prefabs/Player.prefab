@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 8101032766653082206}
   - component: {fileID: 8101032766653082201}
   - component: {fileID: 1301325617778381051}
+  - component: {fileID: 693389677741267791}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -139,17 +140,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8101032766653082202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef68d5407dd14ce48b6234195f94ce5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  useGravity: 1
-  gravity: -30
+  speed: 15
+  useGravity: 0
+  gravity: 0
   cam: {fileID: 0}
   controller: {fileID: 8101032766653082201}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   selectionPrefab: {fileID: 3405347755800405849, guid: 4778de8d24e535443b8ec76fce1b1f6b, type: 3}
+--- !u!114 &693389677741267791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101032766653082202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e2e623a812ff649b4857a034d0a657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  useGravity: 0
+  gravity: 0
+  cam: {fileID: 0}
+  controller: {fileID: 8101032766653082201}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -1,26 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public abstract class PlayerController : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller; 
-    [SerializeField] private float speed = 5.0f;
+    [Header("Movement")]
+    [SerializeField] protected float speed;
+    [SerializeField] protected bool useGravity;
+    [SerializeField] protected float gravity;
+    [Header("References")]
+    [SerializeField] protected Camera cam;
+    [SerializeField] protected CharacterController controller;
+    [SerializeField] protected LayerMask groundLayer;
 
-    private void Start()
+    protected float verticalSpeed = 0f;
+
+    protected void HandleGravity()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+        if (useGravity)
+        {
+            if (Physics.CheckSphere(transform.position, 0.2f))
+                verticalSpeed = 0f;
+            else
+                Debug.Log("I am not grounded");
 
-    void Update()
-    {
-        // Using the old input system? We might want to change that.
-        // Get direction relative to look direction by getting it from the transform.
-        Vector3 moveInput = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
-        controller.Move(moveInput * speed * Time.deltaTime);
-
-        if (Input.GetKeyDown("escape"))
-            Cursor.lockState = CursorLockMode.None;
+            verticalSpeed += gravity * Time.deltaTime;
+        }
     }
 
 }

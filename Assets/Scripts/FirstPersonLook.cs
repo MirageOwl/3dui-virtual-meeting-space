@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseHandler : MonoBehaviour
+public class FirstPersonLook : MonoBehaviour
 {
     [SerializeField] private float horizontalSpeed = 1f;
     [SerializeField] private float verticalSpeed = 1f;
