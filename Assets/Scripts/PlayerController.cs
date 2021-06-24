@@ -12,6 +12,13 @@ public abstract class PlayerController : MonoBehaviour
     [SerializeField] protected LayerMask groundLayer;
 
     protected float verticalSpeed = 0f;
+    
+    public bool Active { get; protected set; }
+
+    protected virtual void Awake()
+    {
+        Active = false;
+    }
 
     protected void HandleGravity()
     {
@@ -26,4 +33,14 @@ public abstract class PlayerController : MonoBehaviour
         }
     }
 
+    public void Activate()
+    {
+        foreach (PlayerController controller in gameObject.GetComponents<PlayerController>())
+        {
+            controller.Deactivate();
+        }
+        Active = true;
+    }
+
+    public void Deactivate() { Active = false; }
 }
