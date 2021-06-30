@@ -8,24 +8,48 @@ using UnityEngine.Networking;
 
 public class Logger : MonoBehaviour
 {
-// Start is called before the first frame update
+    private int collisionCount;
+    private List<TimeSpan> checkpointTimes;
+    private DateTime start;
+    private bool isDisabled = false;
+    
+    // Start is called before the first frame update
     private void Start()
     {
-        Log("josh", "1",
-            new[]
-            {
-                TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(40),
-                TimeSpan.FromSeconds(50)
-            }, new[]
-            {
-                TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(40),
-                TimeSpan.FromSeconds(50)
-            });
+        this.OnStartLogging();
+        this.checkpointTimes = new List<TimeSpan>();
     }
 
-// Update is called once per frame
+    // Update is called once per frame
     private void Update()
     {
+        //maybe change this later don't know how this is supposd to wrk
+        var checkpointsLeft = GameObject.FindGameObjectsWithTag("Checkpoint");
+        if (!isDisabled && checkpointsLeft.Length == 0)
+        {
+            OnEndLogging();
+        }
+    }
+
+    public void OnEndLogging()
+    {
+        isDisabled = true;
+        Log("josh", "1", this.checkpointTimes.Take(5).ToList(), this.checkpointTimes.Skip(5), collisionCount);
+    }
+
+    public void OnStartLogging()
+    {
+        this.start = DateTime.Now;
+    }
+
+    public void EnterCheckpoint()
+    {
+        checkpointTimes.Add(DateTime.Now-start);
+    }
+
+    public void OnCollide()
+    {
+        collisionCount++;
     }
 
     private IEnumerator Post(string url, string bodyJsonString)
@@ -36,21 +60,20 @@ public class Logger : MonoBehaviour
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
         yield return request.SendWebRequest();
-        Debug.Log("Status Code: " + request.responseCode);
     }
 
-    public IEnumerator Log(string participantID, string permutation, IEnumerable<TimeSpan> checkpointTimes0,
-        IEnumerable<TimeSpan> checkpointTimes1)
+    public void Log(string participantID, string permutation, IEnumerable<TimeSpan> checkpointTimes0,
+        IEnumerable<TimeSpan> checkpointTimes1, int collisionCount)
     {
-        var json = $@"
-                {{
-                    ""timestamp"": DateTimeOffset.Now.ToUnixTimeSeconds()
+        var json = $@"{{
+                    ""timestamp"": {DateTimeOffset.Now.ToUnixTimeSeconds()},
                     ""participant_id"" : ""{participantID}"",
                     ""permutation"" : ""{permutation}"",
-                    ""checkpoint_times_0"" : [{string.Join(", ", checkpointTimes0.ToList())}],
-                    ""checkpoint_times_1"" : [{string.Join(", ", checkpointTimes1.Select(x => x.ToString()))}]
+                    ""checkpoint_times_0"" : [{string.Join(", ", checkpointTimes0.Select(x => '"' + x.TotalSeconds + '"'))}],
+                    ""checkpoint_times_1"" : [{string.Join(", ", checkpointTimes1.Select(x => '"' + x.TotalSeconds + '"'))}],
+                    ""collision_count"" : {collisionCount} 
                 }}
         ";
-        return Post("https://3dui-logs.azurewebsites.net/logParticipation", json);
+        StartCoroutine(Post("https://3dui-logs.azurewebsites.net/logParticipation", json));
     }
 }
