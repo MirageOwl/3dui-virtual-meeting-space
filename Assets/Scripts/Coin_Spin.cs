@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Coin_Spin : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private bool spinX;
+    [SerializeField] private bool spinY;
+    [SerializeField] private bool spinZ;
+    [SerializeField] private float speed = 1f;
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, 1);
+        Spin();
+    }
+
+    void Spin() 
+    {
+        if (spinX)
+            transform.Rotate(speed, 0, 0);
+        if (spinY)
+            transform.Rotate(0, speed, 0);
+        if (spinZ)
+            transform.Rotate(0, 0, speed);
     }
 }

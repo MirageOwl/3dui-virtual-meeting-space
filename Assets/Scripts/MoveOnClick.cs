@@ -3,6 +3,7 @@ using UnityEngine;
 public class MoveOnClick : PlayerController
 {
     [SerializeField] private GameObject selectionPrefab;
+    [SerializeField] private float maxDistance = 100f;
 
     private Transform cursor;
 
@@ -39,7 +40,7 @@ public class MoveOnClick : PlayerController
     private void MoveCursor()
     {
         RaycastHit hitInfo;
-        bool hit = Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hitInfo, 100f, groundLayer);
+        bool hit = Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hitInfo, maxDistance, groundLayer);
         if (hit) // Show cursor when in bounds
         {
             cursor.gameObject.SetActive(true);
