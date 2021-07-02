@@ -30,7 +30,7 @@ public class AIMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.updateRotation = true;
+        //agent.updateRotation = false;
         Patroling();
 
         /*
