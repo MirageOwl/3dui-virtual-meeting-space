@@ -3,16 +3,6 @@ using UnityEngine;
 public class OnTriggerCheckpoint : MonoBehaviour
 {
     private bool isDisabled = false;
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +11,7 @@ public class OnTriggerCheckpoint : MonoBehaviour
         var logger = (Logger) loggerGO.GetComponent(typeof(Logger));
         logger.EnterCheckpoint();
         isDisabled = true;
+        CheckpointOrder.Instance.Advance();
         this.gameObject.SetActive(false);
     }
 }
