@@ -11,6 +11,8 @@ public class AIMovement : MonoBehaviour
 
     //Patroling
     public Vector3 walkPoint;
+    public Vector3 oldPosition;
+    public Vector3 newPosition;
     bool walkPointSet;
     public float walkPointRange;
 
@@ -25,12 +27,19 @@ public class AIMovement : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        oldPosition = agent.transform.position;
+        newPosition = oldPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
         //agent.updateRotation = false;
+        newPosition = agent.transform.position;
+
+        if (oldPosition == newPosition)
+            walkPointSet = false;
+
         Patroling();
 
         /*
@@ -47,8 +56,12 @@ public class AIMovement : MonoBehaviour
     {
         if (!walkPointSet) SearchWalkPoint();
 
+        oldPosition = agent.transform.position;
+
         if (walkPointSet)
             agent.SetDestination(walkPoint);
+
+        
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 

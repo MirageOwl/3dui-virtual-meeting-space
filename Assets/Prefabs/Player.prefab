@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99215686, g: 0.972549, b: 0.4627451, a: 1}
+  m_Color: {r: 1, g: 0.17699999, b: 0.9122558, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9150943, g: 0.56545925, b: 0.88206214, a: 1}
+  m_Color: {r: 1, g: 0.53900003, b: 0.9514739, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 8101032765413970058}
   - component: {fileID: 8101032765413970062}
   - component: {fileID: 8101032765413970057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 8101032766653082201}
   - component: {fileID: 1301325617778381051}
   - component: {fileID: 693389677741267791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   selectionPrefab: {fileID: 3405347755800405849, guid: 4778de8d24e535443b8ec76fce1b1f6b, type: 3}
-  maxDistance: 100
+  maxDistance: 200
 --- !u!114 &693389677741267791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99215686, g: 0.972549, b: 0.4627451, a: 1}
+  m_Color: {r: 1, g: 0.17699999, b: 0.9122558, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

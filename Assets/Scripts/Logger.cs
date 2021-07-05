@@ -8,16 +8,15 @@ using UnityEngine.Networking;
 
 public class Logger : MonoBehaviour
 {
-    private int collisionCount;
     private List<TimeSpan> checkpointTimes;
+    private int collisionCount;
+    private bool isDisabled;
     private DateTime start;
-    private bool isDisabled = false;
-    
+
     // Start is called before the first frame update
     private void Start()
     {
-        this.OnStartLogging();
-        this.checkpointTimes = new List<TimeSpan>();
+        checkpointTimes = new List<TimeSpan>();
     }
 
     // Update is called once per frame
@@ -25,26 +24,30 @@ public class Logger : MonoBehaviour
     {
         //maybe change this later don't know how this is supposd to wrk
         var checkpointsLeft = GameObject.FindGameObjectsWithTag("Checkpoint");
-        if (!isDisabled && checkpointsLeft.Length == 0)
-        {
-            OnEndLogging();
-        }
+        if (!isDisabled && checkpointsLeft.Length == 0) OnEndLogging();
     }
 
     public void OnEndLogging()
     {
         isDisabled = true;
-        Log("josh", "1", this.checkpointTimes.Take(5).ToList(), this.checkpointTimes.Skip(5), collisionCount);
+        Log(checkpointTimes.Take(5).ToList(), checkpointTimes.Skip(5), collisionCount);
+        var splitUrl = Application.absoluteURL.Split('_');
+        var splitUrl2 = splitUrl[1].Split('.');
+        if (splitUrl[1].Contains("game2")) Application.OpenURL(splitUrl[0] + '_' + splitUrl2[0] + '.' + "postform");
+        var controlType = splitUrl2[0];
+        if (controlType.Contains('c'))
+            Application.OpenURL(splitUrl[0] + "_d.middleform");
+        else if (controlType.Contains('d')) Application.OpenURL(splitUrl[0] + "_c.middleform");
     }
 
     public void OnStartLogging()
     {
-        this.start = DateTime.Now;
+        start = DateTime.Now;
     }
 
     public void EnterCheckpoint()
     {
-        checkpointTimes.Add(DateTime.Now-start);
+        checkpointTimes.Add(DateTime.Now - start);
     }
 
     public void OnCollide()
@@ -62,15 +65,17 @@ public class Logger : MonoBehaviour
         yield return request.SendWebRequest();
     }
 
-    public void Log(string participantID, string permutation, IEnumerable<TimeSpan> checkpointTimes0,
+    private void Log(IEnumerable<TimeSpan> checkpointTimes0,
         IEnumerable<TimeSpan> checkpointTimes1, int collisionCount)
     {
+        var split = Application.absoluteURL.Split('/');
+        var participantID = split[split.Length - 1];
+        var permutation = split[split.Length - 2];
         var json = $@"{{
                     ""timestamp"": {DateTimeOffset.Now.ToUnixTimeSeconds()},
                     ""participant_id"" : ""{participantID}"",
                     ""permutation"" : ""{permutation}"",
-                    ""checkpoint_times_0"" : [{string.Join(", ", checkpointTimes0.Select(x => '"' + x.TotalSeconds + '"'))}],
-                    ""checkpoint_times_1"" : [{string.Join(", ", checkpointTimes1.Select(x => '"' + x.TotalSeconds + '"'))}],
+                    ""checkpoint_times"" : [{string.Join(", ", checkpointTimes0.Select(x => '"' + x.TotalSeconds + '"'))}],
                     ""collision_count"" : {collisionCount} 
                 }}
         ";
