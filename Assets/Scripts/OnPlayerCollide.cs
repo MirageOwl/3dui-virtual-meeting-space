@@ -15,6 +15,7 @@ public class OnPlayerCollide : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log("I collided");
         //This has runtime of like O(fucking eternity), but I don't care
         var loggerGO = GameObject.Find("Logger");
         var logger = (Logger) loggerGO.GetComponent(typeof(Logger));

@@ -6910,7 +6910,7 @@ GameObject:
   - component: {fileID: 8535340772220911864}
   - component: {fileID: 6995814991070539377}
   m_Layer: 0
-  m_Name: Custom simple human_prefab
+  m_Name: SittingHuman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6941,7 +6941,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
