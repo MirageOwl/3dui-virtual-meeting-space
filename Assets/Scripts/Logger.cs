@@ -33,11 +33,18 @@ public class Logger : MonoBehaviour
         Log(checkpointTimes.Take(5).ToList(), checkpointTimes.Skip(5), collisionCount);
         var splitUrl = Application.absoluteURL.Split('_');
         var splitUrl2 = splitUrl[1].Split('.');
-        if (splitUrl[1].Contains("game2")) Application.OpenURL(splitUrl[0] + '_' + splitUrl2[0] + '.' + "postform");
-        var controlType = splitUrl2[0];
-        if (controlType.Contains('c'))
-            Application.OpenURL(splitUrl[0] + "_d.middleform");
-        else if (controlType.Contains('d')) Application.OpenURL(splitUrl[0] + "_c.middleform");
+        if (splitUrl[1].Contains("game2"))
+        {
+            Application.OpenURL(splitUrl[0] + '_' + splitUrl2[0] + '.' + "postform");
+        }
+        else
+        {
+            var controlType = splitUrl2[0];
+            if (controlType.Contains('c'))
+                Application.OpenURL(splitUrl[0] + "_d.middleform");
+            else if (controlType.Contains('d'))
+                Application.OpenURL(splitUrl[0] + "_c.middleform");
+        }
     }
 
     public void OnStartLogging()
