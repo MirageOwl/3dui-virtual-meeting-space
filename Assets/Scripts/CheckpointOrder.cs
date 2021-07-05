@@ -6,6 +6,7 @@ public class CheckpointOrder : MonoBehaviour
 {
     public static CheckpointOrder Instance;
 
+    [SerializeField] Logger logger;
     [SerializeField] Collider[] checkpoints;
 
     private int current;
@@ -31,7 +32,14 @@ public class CheckpointOrder : MonoBehaviour
     public void Advance()
     {
         checkpoints[current].enabled = false;
-        current += 1;
-        checkpoints[current].enabled = true;
+        if (current + 1 < checkpoints.Length)
+        {
+            current += 1;
+            checkpoints[current].enabled = true;
+        }
+        else
+        {
+            logger.OnEndLogging();
+        }
     }
 }

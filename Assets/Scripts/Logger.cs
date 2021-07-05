@@ -23,8 +23,9 @@ public class Logger : MonoBehaviour
     private void Update()
     {
         //maybe change this later don't know how this is supposd to wrk
-        var checkpointsLeft = GameObject.FindGameObjectsWithTag("Checkpoint");
-        if (!isDisabled && checkpointsLeft.Length == 0) OnEndLogging();
+        // This check had moved to CheckpointOrder.cs script
+        //var checkpointsLeft = GameObject.FindGameObjectsWithTag("Checkpoint");
+        //if (!isDisabled && checkpointsLeft.Length == 0) OnEndLogging();
     }
 
     public void OnEndLogging()
