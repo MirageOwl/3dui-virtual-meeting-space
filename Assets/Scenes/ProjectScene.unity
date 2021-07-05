@@ -862,7 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9d38c011dcfde48a0b657c4679a60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logger: {fileID: 0}
+  logger: {fileID: 956807610}
   checkpoints:
   - {fileID: 4443629325207737626}
   - {fileID: 1786894467}
@@ -18320,6 +18320,10 @@ PrefabInstance:
     - target: {fileID: 4443629324268981800, guid: f629fd78de246f047b43de1389f6864f, type: 3}
       propertyPath: spinZ
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443629324268981800, guid: f629fd78de246f047b43de1389f6864f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4443629324268981801, guid: f629fd78de246f047b43de1389f6864f, type: 3}
       propertyPath: m_RootOrder

@@ -6,9 +6,9 @@ public class CheckpointOrder : MonoBehaviour
 {
     public static CheckpointOrder Instance;
 
-    [SerializeField] Logger logger;
-    [SerializeField] Collider[] checkpoints;
-
+    [SerializeField] private Logger logger;
+    [SerializeField] private Collider[] checkpoints;
+    
     private int current;
 
     private void Awake()
@@ -27,15 +27,19 @@ public class CheckpointOrder : MonoBehaviour
         }
         current = 0;
         checkpoints[current].enabled = true;
+        checkpoints[current].GetComponent<CheckpointVisuals>().Highlight();
     }
 
     public void Advance()
     {
         checkpoints[current].enabled = false;
+
         if (current + 1 < checkpoints.Length)
         {
+            checkpoints[current].GetComponent<CheckpointVisuals>().RemoveHighlight();
             current += 1;
             checkpoints[current].enabled = true;
+            checkpoints[current].GetComponent<CheckpointVisuals>().Highlight();
         }
         else
         {

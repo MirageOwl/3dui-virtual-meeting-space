@@ -792,9 +792,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4443629324268981801}
-  - component: {fileID: 4443629324268981800}
   - component: {fileID: 632235566926274738}
   - component: {fileID: 6456939620454984035}
+  - component: {fileID: 3167247885058002305}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Checkpoint
@@ -817,22 +817,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &4443629324268981800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4443629324268981814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42f284e1ff330184db507470ed4a8a9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spinX: 0
-  spinY: 0
-  spinZ: 1
-  speed: 0
 --- !u!65 &632235566926274738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -858,3 +842,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c27709c0ee0d064eaea5095cd34f626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3167247885058002305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4443629324268981814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dae6f239203fe40ac19823010668ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: {fileID: 1366232626}
+  sign: {fileID: 361755304}
+  highlightColor: {r: 0.9823096, g: 1, b: 0.02352941, a: 1}
