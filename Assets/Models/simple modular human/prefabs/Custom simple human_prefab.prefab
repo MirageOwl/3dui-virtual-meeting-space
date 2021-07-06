@@ -6909,6 +6909,8 @@ GameObject:
   - component: {fileID: -726026134595123246}
   - component: {fileID: 8535340772220911864}
   - component: {fileID: 6995814991070539377}
+  - component: {fileID: -7945088368830997553}
+  - component: {fileID: -4120425867887159547}
   m_Layer: 0
   m_Name: Custom simple human_prefab
   m_TagString: Untagged
@@ -6974,6 +6976,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
+  oldPosition: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
   walkPointRange: 20
 --- !u!136 &6995814991070539377
 CapsuleCollider:
@@ -6989,3 +6993,31 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-7945088368830997553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113561252080322206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c497771fa521714a90179bd3024e2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &-4120425867887159547
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113561252080322206}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
