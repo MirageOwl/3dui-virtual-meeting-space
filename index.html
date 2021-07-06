@@ -6,13 +6,13 @@
     <title>Unity WebGL Player | 3DUI - Virtual Meeting Space</title>
   </head>
   <body style="text-align: center">
-    <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
-    <script src="Build/MovementTest.loader.js"></script>
+    <canvas id="unity-canvas" width=1280 height=720 style="width: 1280px; height: 720px; background: #231F20"></canvas>
+    <script src="Build/DragToMove.loader.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/MovementTest.data.unityweb",
-        frameworkUrl: "Build/MovementTest.framework.js.unityweb",
-        codeUrl: "Build/MovementTest.wasm.unityweb",
+        dataUrl: "Build/DragToMove.data.unityweb",
+        frameworkUrl: "Build/DragToMove.framework.js.unityweb",
+        codeUrl: "Build/DragToMove.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "3DUI - Virtual Meeting Space",
